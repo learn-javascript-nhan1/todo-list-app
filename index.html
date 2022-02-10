@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./public/css/_reset.css">
+  <link rel="stylesheet" href="./public/css/component/Home.css">
+
+  <title>Todo List App</title>
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <div class="app-header">
+        <h1>ToDo List Application</h1>
+      </div>
+      <div class="app-content">
+        <div class="app-content__controls">
+          <div class="app-content__controls-filter">
+            <div class="controls-filter__sort">
+              <div class="controls-filter__sort-select">
+                <select name="" id="sort-select">
+                  <option value="">Name ASC</option>
+                  <option value="">Name DESC</option>
+                  <option value="">Level ASC</option>
+                  <option value="">Level DESC</option>
+                </select>
+              </div>
+              <div class="controls-filter__sort-review">
+                <div class="value">
+                  <span class="type">Name</span>
+                  <span>-</span>
+                  <span class="order-by">DESC</span>
+                </div>
+              </div>
+            </div>
+            <div class="controls-filter__search">
+              <form action="" class="form-search">
+                <div class="form-group">
+                  <input type="text" name="search" placeholder="Search...">
+                  <button type="button">Clear!</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="app-content__controls-form">
+            <form action="" class="form-main">
+              <button type="button" class="btn-toggle">Add Task</button>
+              <div class="form-group">
+                <input type="text" name="name" placeholder="Task name...">
+                <select name="" id="">
+                  <option value="">Small</option>
+                  <option value="">Medium</option>
+                  <option value="">Hight</option>
+                </select>
+                <button class="btn-submit" type="submit">Submit</button>
+                <button class="btn-cancel" type="button">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="app-content__table">
+          <div class="app-content__table-title">
+            <h4>List Task</h4>
+          </div>
+          <div class="app-content__table-list">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Task</th>
+                  <th>Level</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ea c</td>
+                  <td>
+                    <span class="tag high">Hight</span>
+                  </td>
+                  <td>
+                    <button class="btn-edit" type="button">Edit</button>
+                    <button class="btn-delete" type="button">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ea c</td>
+                  <td>
+                    <span class="tag small">Small</span>
+                  </td>
+                  <td>
+                    <button class="btn-edit" type="button">Edit</button>
+                    <button class="btn-delete" type="button">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ea c</td>
+                  <td>
+                    <span class="tag medium">Medium</span>
+                  </td>
+                  <td>
+                    <button class="btn-edit" type="button">Edit</button>
+                    <button class="btn-delete" type="button">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
