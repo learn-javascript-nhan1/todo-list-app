@@ -22,24 +22,18 @@
             <div class="controls-filter__sort">
               <div class="controls-filter__sort-select">
                 <select name="" id="sort-select">
-                  <option value="">Name ASC</option>
-                  <option value="">Name DESC</option>
-                  <option value="">Level ASC</option>
-                  <option value="">Level DESC</option>
+                </select>
                 </select>
               </div>
               <div class="controls-filter__sort-review">
-                <div class="value">
-                  <span class="type">Name</span>
-                  <span>-</span>
-                  <span class="order-by">DESC</span>
+                <div id="sort-value" class="value">
                 </div>
               </div>
             </div>
             <div class="controls-filter__search">
               <form action="" class="form-search">
                 <div class="form-group">
-                  <input type="text" name="search" placeholder="Search...">
+                  <input id="search-task-input" type="text" name="search" placeholder="Search...">
                   <button type="button">Clear!</button>
                 </div>
               </form>
@@ -65,7 +59,7 @@
           <div class="app-content__table-title">
             <h4>List Task</h4>
           </div>
-          <div class="app-content__table-list">
+          <div id="main-content" class="app-content__table-list">
             <table>
               <thead>
                 <tr>
@@ -75,7 +69,7 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="task-content">
                 <tr>
                   <td>1</td>
                   <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ea c</td>
@@ -113,6 +107,13 @@
             </table>
           </div>
         </div>
+        <div id="not-found">
+            <img src="https://findicons.com/files/icons/986/aeon/256/close.png" alt="">
+        </div>
       </div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+<script type="module" src="./public/js/app.js"></script>
+</body>
+</html>
