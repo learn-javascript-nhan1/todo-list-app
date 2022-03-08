@@ -68,6 +68,7 @@
     color: #fff;
   }
   
+  
   .app-content__controls-form .btn-toggle {
     font-size: 1rem;
     padding: 9px 8px;
@@ -80,6 +81,16 @@
     margin-bottom: 15px;
   }
   
+  .app-content__controls-form .btn-toggle.hidden {
+    border: 1px solid #17a2b8;
+    background: #17a2b8;
+  }
+
+  .app-content__controls-form .btn-toggle.show  {
+    border: 1px solid #f00;
+    background: #f00;
+  }
+
   .app-content__controls-form .form-group {
     display: flex;
     justify-content: space-between;
@@ -178,3 +189,7 @@
     background: #dc3545;
     color: #fff;
   } 
+  .form-main.hidden .form-wrapper{
+    display: none;
+  }
+  

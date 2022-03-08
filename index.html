@@ -40,17 +40,19 @@
             </div>
           </div>
           <div class="app-content__controls-form">
-            <form action="" class="form-main">
-              <button type="button" class="btn-toggle">Add Task</button>
-              <div class="form-group">
-                <input type="text" name="name" placeholder="Task name...">
-                <select name="" id="">
-                  <option value="">Small</option>
-                  <option value="">Medium</option>
-                  <option value="">Hight</option>
-                </select>
-                <button class="btn-submit" type="submit">Submit</button>
-                <button class="btn-cancel" type="button">Cancel</button>
+            <form id="form-main" action="" class="form-main hidden">
+              <button id="btn-toggle" type="button" class="btn-toggle hidden">Hiển Thị Form</button>
+              <div class="form-wrapper">
+                <div id="form-add-task" class="form-group">
+                  <input id="task-name-value" type="text" name="name" placeholder="Task name...">
+                  <select name="" id="task-level-value">
+                    <option value="1">Small</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Hight</option>
+                  </select>
+                  <button class="btn-submit" type="submit">Submit</button>
+                  <button class="btn-cancel" type="button">Cancel</button>
+                </div>
               </div>
             </form>
           </div>
