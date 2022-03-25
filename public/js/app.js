@@ -1,6 +1,7 @@
 import Tasks from "../data/tasks.js";
 import { covertLevel } from "../utils/helpers.js";
- 
+import TaskModel from "../models/task.js";
+
 const sortTypeData = [
 {
  sortBY : "title ",
@@ -35,11 +36,13 @@ function init(){
   const $imageNotFound = document.getElementById('not-found');
   const $table = document.getElementById('task-content');
   const $sortValue = document.getElementById('sort-value');
+  const $btnToggle = document.getElementById('btn-toggle');
+  const $mainForm  = document.getElementById('form-main');
 
   renderTasks(Tasks);
   renderSortList(sortTypeData);
   
-
+  let isShowForm = false;
 
   let searchString = '';
   let sortData = {
@@ -51,8 +54,79 @@ function init(){
 
 
   // add sự kiện 
-  $searchInput.addEventListener('input', search)
-  $sortSelect.addEventListener('change', sort)
+  $searchInput.addEventListener('input', search);
+  $sortSelect.addEventListener('change', sort);
+  $btnToggle.addEventListener('click', toggleForm);
+  $mainForm.addEventListener('submit', submitForm);
+
+
+  function submitForm (e){
+    e.preventDefault();
+    const $taskName  = document.getElementById('task-name-value');
+    const $taskLevel = document.getElementById('task-level-value');
+
+    const $taskNameValue = $taskName.value;
+    const $taskLevelValue = parseInt($taskLevel.value);
+
+    if ($taskNameValue.length <= 0 ) {
+      alert('Bạn vui lòng nhập task Title ')
+    } else {
+      const taskModel = new TaskModel (uuidv4(),$taskNameValue,$taskLevelValue);
+      Tasks.push(taskModel);
+      renderTasks(Tasks)
+    }
+  }
+
+  function toggleForm() {
+    if(isShowForm === true) {
+      // Tắt form đi 
+      $mainForm.classList.add('hidden')
+      $btnToggle.innerText = ('Hiển thị form');
+      $btnToggle.classList.remove('show');
+      $btnToggle.classList.add('hidden');
+      isShowForm = false ;
+    } else {
+      $mainForm.classList.remove('hidden')
+      $btnToggle.innerText = ('Bật form lên');
+      $btnToggle.classList.remove('hidden');
+      $btnToggle.classList.add('show');
+      isShowForm = true ;
+    }
+  }
+
+  function handleDelete() {
+    // lấy danh sách Dom
+    const $listButtonDelete = document.querySelectorAll('.btn-delete');
+
+    $listButtonDelete.forEach($el => {
+      $el.addEventListener('click', function (e) {
+        const $btn = e.target;
+        const $parent = $btn.parentNode.parentElement;
+        const taskId = $parent.getAttribute('data-id');
+        console.log(Tasks);
+        console.log(taskId);
+        if(handleConFirm('you are sure delete this task?')) {
+          const indexTask = Tasks.findIndex(function (item) {
+            // if (item.id === taskId) {
+            //   return true;
+            // }
+            //   return false;
+            console.log(item.id);
+            console.log(taskId);
+            if(item.id == taskId) {
+              console.log('oke');
+            }
+          });
+          console.log(indexTask);
+        }
+      });
+    });
+  }
+
+  function handleConFirm(textConfirm) {
+    const confirmed = confirm(textConfirm);
+    return confirmed;
+  }
 
   function search(e){
     // Lấy giá trị trong input
@@ -104,11 +178,7 @@ function init(){
         }else {
           return false;
         }
-        
-  
       });
-     
-
       // giá trị sắp xếp: 2 => title, level
 
       if(sortData.sortBy === 'title'){
@@ -122,7 +192,7 @@ function init(){
         // i++ => i = 1
       for (let i = 0; i < result.length; i++){
         // kiểm tra oderBy
-        if(sortData.sortBy === 'asc'){
+        if(sortData.oderBy === 'asc'){
           // sắp xếp tăng dần
           if(result[i].title > result[i+1].title){
             tmp = result[i];
@@ -138,6 +208,7 @@ function init(){
           }
         }
       }
+        
     } else {
       
     }
@@ -180,15 +251,14 @@ function init(){
       
       //  Từ dạng Array chuyển về dạng String HTML
     const taskHTMLString = taskHTMLArray.join('');
-
     $table.innerHTML = taskHTMLString;
-
+    handleDelete();
   }
 
   function renderSortList(list){
     let sortHTMLArray = list.map(function(item) {
       // .toUpperCase(): chữ thường thành hoa
-      return `<option = value="${(item.sortBY).toUpperCase()}-${(item.oderBy).toUpperCase()}">${(item.sortBY).toUpperCase()}-${(item.oderBy).toUpperCase()}</option>`;
+      return `<option value="${(item.sortBY).toUpperCase()}-${(item.oderBy).toUpperCase()}">${(item.sortBY).toUpperCase()}-${(item.oderBy).toUpperCase()}</option>`;
     });
     //  Từ dạng Array chuyển về dạng String HTML
     const sortHTMLString = sortHTMLArray.join('');
